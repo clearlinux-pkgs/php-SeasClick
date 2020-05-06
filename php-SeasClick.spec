@@ -4,7 +4,7 @@
 #
 Name     : php-SeasClick
 Version  : 0.1.0
-Release  : 3
+Release  : 4
 URL      : https://pecl.php.net//get/SeasClick-0.1.0.tgz
 Source0  : https://pecl.php.net//get/SeasClick-0.1.0.tgz
 Summary  : No detailed summary available
@@ -13,6 +13,7 @@ License  : Apache-2.0 BSD-2-Clause
 Requires: php-SeasClick-lib = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-php
+Patch1: PHP-7.4-support.patch
 
 %description
 SeasClick
@@ -29,6 +30,8 @@ lib components for the php-SeasClick package.
 
 %prep
 %setup -q -n SeasClick-0.1.0
+cd %{_builddir}/SeasClick-0.1.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -47,4 +50,4 @@ make  %{?_smp_mflags}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/extensions/no-debug-non-zts-20180731/SeasClick.so
+/usr/lib64/extensions/no-debug-non-zts-20190902/SeasClick.so

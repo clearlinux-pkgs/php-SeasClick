@@ -1,0 +1,27 @@
+From fe089abf1a34a1ae5575bd7cc8b9bfa9a6605e16 Mon Sep 17 00:00:00 2001
+From: Panda <itwujunze@163.com>
+Date: Tue, 28 May 2019 16:22:15 +0800
+Subject: [PATCH] PHP 7.4 support
+
+PHP 7.4 support
+fix: https://github.com/SeasX/SeasClick/issues/1
+---
+ php7_wrapper.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/php7_wrapper.h b/php7_wrapper.h
+index e856b15..2306ff8 100644
+--- a/php7_wrapper.h
++++ b/php7_wrapper.h
+@@ -15,6 +15,11 @@
+   | Author:  SeasX Group <ahhhh.wang@gmail.com>                          |
+   +----------------------------------------------------------------------+
+ */
++// PHP7.4 + 
++#if !defined(ZEND_ACC_IMPLICIT_PUBLIC)
++# define ZEND_ACC_IMPLICIT_PUBLIC ZEND_ACC_PUBLIC
++#endif
++
+ // PHP7+
+ #if PHP_MAJOR_VERSION < 7
+ 
