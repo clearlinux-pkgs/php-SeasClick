@@ -4,12 +4,13 @@
 #
 Name     : php-SeasClick
 Version  : 0.1.1
-Release  : 10
+Release  : 11
 URL      : https://github.com/SeasX/SeasClick/archive/refs/tags/SeasClick-0.1.1.zip
 Source0  : https://github.com/SeasX/SeasClick/archive/refs/tags/SeasClick-0.1.1.zip
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-2.0 BSD-2-Clause
+License  : Apache-2.0 BSD-2-Clause MIT
+Requires: php-SeasClick-lib = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-php
 
@@ -17,6 +18,14 @@ BuildRequires : buildreq-php
 SeasClick
 =====
 [![Build Status](https://travis-ci.org/SeasX/SeasClick.svg?branch=master)](https://travis-ci.org/SeasX/SeasClick)
+
+%package lib
+Summary: lib components for the php-SeasClick package.
+Group: Libraries
+
+%description lib
+lib components for the php-SeasClick package.
+
 
 %prep
 %setup -q -n SeasClick-SeasClick-0.1.1
@@ -26,14 +35,17 @@ cd %{_builddir}/SeasClick-SeasClick-0.1.1
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
+
 phpize
-%configure --disable-static
+%configure
 make  %{?_smp_mflags}
 
 %install
 %make_install
 
-
 %files
+%defattr(-,root,root,-)
+
+%files lib
 %defattr(-,root,root,-)
 /usr/lib64/extensions/no-debug-non-zts-20210902/SeasClick.so
