@@ -7,7 +7,7 @@
 #
 Name     : php-SeasClick
 Version  : 0.1.1
-Release  : 48
+Release  : 49
 URL      : https://github.com/SeasX/SeasClick/archive/refs/tags/SeasClick-0.1.1.zip
 Source0  : https://github.com/SeasX/SeasClick/archive/refs/tags/SeasClick-0.1.1.zip
 Summary  : No detailed summary available
